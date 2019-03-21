@@ -2,6 +2,16 @@ version: '3.7'
 
 services:
 
+  fluentd:
+    container_name: fluentd
+    image: fluent/fluentd:v1.3.3-1.0
+    networks:
+      - logging
+    ports:
+      - "24224:24224"
+      - "24224:24224/udp"
+    restart: always
+
   elasticsearch:
     container_name: elasticsearch
     image: elasticsearch:6.5.4
